@@ -30,10 +30,9 @@ INSTRUCTION_FETCH/
 - README.md/
 
 ## Testbench Strategy
-A single randomized testbench is provided:
-- **tb_INST_FETCH.vhd** — used fixed input same as what's in the memory:
-  - PC increments by 4 every clock cycle
-  - PC resets to zero when `rst = '1'` 
+- used fixed input same as what's in the memory:
+- PC increments by 4 every clock cycle
+- PC resets to zero when `rst = '1'` 
 
 ## Key Learnings
 - Learned that increasing the clock period (slowing down the clock) helps with debugging by making waveform transitions easier to observe. Once debugging is complete, decreasing the clock period improves simulation speed and better reflects real CPU timing.
