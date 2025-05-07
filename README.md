@@ -1,7 +1,7 @@
 # INSTRUCTION_FETCH
 
 ## Overview
-This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-stage pipelined RISC-V CPU. The IF module generates the program counter (`pc_out`), increments it by 4 each cycle, and forwards a 32-bit instruction (`instr_in`) to the Decode stage (`instr_out`). This module focuses solely on sequential instruction flow and does not yet implement branching, flushing, or stalling.
+This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-stage pipelined RISC-V CPU. The IF module maintains an internal program counter (PC), increments it by 4 each cycle, and fetches a 32-bit instruction from an internal read-only memory (ROM). The fetched instruction is then forwarded to the Decode stage via instr_out. This module supports only sequential instruction flow and does not yet implement branching, flushing, or pipeline stalling.
 
 ## Features
 - 32-bit program counter with synchronous reset
@@ -15,7 +15,7 @@ This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-sta
     
 ## Project Structure
 INSTRUCTION_FETCH/
-- function_dec_def
+- customized_function
     - **Noridel_function.vhd** - customize function declaration
     - **Noridel_fuction_def.vhd** - function definition    
 - images/
