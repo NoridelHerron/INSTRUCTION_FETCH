@@ -9,14 +9,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity INST_FETCH is
-    Port ( clk        : in  std_logic;                      -- input Clock signal
-           rst        : in  std_logic;                      -- input Active-high reset signal
-           instr_in   : in  std_logic_vector(31 downto 0);  -- input 32-bits instruction from instruction memory
-           pc_out     : out std_logic_vector(31 downto 0);  -- output 32-bits program counter sent to instruction memory
-           instr_out  : out std_logic_vector(31 downto 0)); -- output instr_out- 32-bit instruction forwarded to Decode stage
+    Port ( clk, rst  : in  std_logic;   
+           instr_out : out std_logic_vector(31 downto 0)); -- output instr_out- 32-bit instruction forwarded to Decode stage
 end INST_FETCH;
 
 architecture behavior of INST_FETCH is
+
+    component INST_MEM
+        Port ( addr   : in  std_logic_vector(31 downto 0);  -- input: byte address to fetch instruction
+               instr  : out std_logic_vector(31 downto 0)); -- output: instruction at the given address
+    end component;
 
     -- Internal signal for program counter (PC)
     signal pc : std_logic_vector(31 downto 0) := (others => '0');
@@ -35,8 +37,7 @@ begin
         end if;
     end process;
 
-    -- Output assignments
-    pc_out    <= pc;         -- Send current PC to instruction memory
-    instr_out <= instr_in;   -- Pass fetched instruction to ID stage
+    -- Get the instruction from the memory based on the PC
+    MEM : INST_MEM port map (pc, instr_out);
 
 end behavior;
