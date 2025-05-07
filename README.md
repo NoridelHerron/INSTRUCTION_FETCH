@@ -9,7 +9,7 @@ This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-sta
 - Clean design for integration with instruction memory and decode stage
 
 ## Internal Module
-**INST_MEM**
+**INST_MEM** https://github.com/NoridelHerron/MEMORY_MODULE
     - Take PC counter
     - Return instruction 
     
