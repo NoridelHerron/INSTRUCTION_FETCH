@@ -5,22 +5,24 @@ This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-sta
 
 ## Features
 - 32-bit program counter with synchronous reset
-- PC increments by 4 every clock cycle
-- Transparent passthrough of fetched instruction
+- PC increments by 4 every clock cycle 
 - Clean design for integration with instruction memory and decode stage
 
+## Internal Module
+**INST_MEM**
+    - Take PC counter
+    - Return instruction 
+    
 ## Project Structure
 INSTRUCTION_FETCH/
 - function_dec_def
-    - fuction_definition.vhd
-    - reusable_function.vhd
+    - **Noridel_function.vhd** - customize function declaration
+    - **Noridel_fuction_def.vhd** - function definition    
 - images/
-    - tcl.png
-    - wave1.png
-    - wave2.png
-    - counter_reset.png
+    - tcl.png  
 - src/
     - INST_FETCH.vhd
+    - INST_MEM
 - test_bench/
     - tb_INST_FETCH.vhd
 - .gitignore/
@@ -29,10 +31,9 @@ INSTRUCTION_FETCH/
 
 ## Testbench Strategy
 A single randomized testbench is provided:
-- **tb_INST_FETCH.vhd** — Randomly generates 32-bit instruction inputs and verifies:
+- **tb_INST_FETCH.vhd** — used fixed input same as what's in the memory:
   - PC increments by 4 every clock cycle
-  - PC resets to zero when `rst = '1'`
-  - `instr_in` is correctly passed to `instr_out`
+  - PC resets to zero when `rst = '1'` 
 
 ## Key Learnings
 - Learned that increasing the clock period (slowing down the clock) helps with debugging by making waveform transitions easier to observe. Once debugging is complete, decreasing the clock period improves simulation speed and better reflects real CPU timing.
@@ -43,17 +44,10 @@ A single randomized testbench is provided:
 Shows that the randomized testing was successful
 ![Tcl Output](images/tcl.png) 
 
-### Waveform Example
-Shows that the instructions in and out are equal
-![Tcl Output](images/wave1.png) 
-![Tcl Output](images/wave2.png) 
-PC counter resets
-![Tcl Output](images/counter_reset.png) 
-
 ## How to Run
 
 1. Launch **Vivado 2019** or newer
-2. Open the project or create a new one and add the src and a test bench file.
+2. Open the project or create a new one and add the src, function_dec_def and a test bench file.
 3. Set the testbench file as the top-level simulation unit.
 4. Run the simulation:
     - Go to Flow → Run Simulation → Run Behavioral Simulation
