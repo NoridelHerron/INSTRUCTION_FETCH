@@ -3,8 +3,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use std.textio.all;
+
 library work;
-use work.Noridel_function.all;
+use work.reusable_function.all;
 
 entity tb_INST_FETCH is
 end tb_INST_FETCH;

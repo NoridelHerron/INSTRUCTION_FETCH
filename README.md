@@ -16,8 +16,8 @@ This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-sta
 ## Project Structure
 INSTRUCTION_FETCH/
 - customized_function
-    - **Noridel_function.vhd** - customize function declaration
-    - **Noridel_fuction_def.vhd** - function definition    
+    - **reusable_function.vhd** - customize function declaration
+    - **reusable_fuction_def.vhd** - function definition    
 - images/
     - tcl.png  
 - src/
@@ -40,13 +40,13 @@ INSTRUCTION_FETCH/
 
 ## Simulation Results
 ### Tcl Console Output
-Shows that the randomized testing was successful
 ![Tcl Output](images/tcl.png) 
+Shows that the testing was successful
 
 ## How to Run
 
 1. Launch **Vivado 2019** or newer
-2. Open the project or create a new one and add the src, function_dec_def and a test bench file.
+2. Open the project or create a new one and add the src, function_dec_def and a test bench files.
 3. Set the testbench file as the top-level simulation unit.
 4. Run the simulation:
     - Go to Flow → Run Simulation → Run Behavioral Simulation
