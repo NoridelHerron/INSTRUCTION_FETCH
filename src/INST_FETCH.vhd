@@ -10,7 +10,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity INST_FETCH is
     Port ( clk, rst  : in  std_logic;   
-           instr_out : out std_logic_vector(31 downto 0)); -- output instr_out- 32-bit instruction forwarded to Decode stage
+           instr_out : out std_logic_vector(31 downto 0); -- output instr_out- 32-bits instruction forwarded to Decode stage
+           pc_out    : out std_logic_vector(31 downto 0) ); -- Program counter for debugging purpose
 end INST_FETCH;
 
 architecture behavior of INST_FETCH is
@@ -22,6 +23,8 @@ architecture behavior of INST_FETCH is
 
     -- Internal signal for program counter (PC)
     signal pc : std_logic_vector(31 downto 0) := (others => '0');
+    signal inst : std_logic_vector(31 downto 0);
+
 
 begin
     process(clk)
@@ -38,6 +41,9 @@ begin
     end process;
 
     -- Get the instruction from the memory based on the PC
-    MEM : INST_MEM port map (pc, instr_out);
+    MEM : INST_MEM port map (pc, inst);
+    
+    instr_out <= inst;     -- Clean, separate driver
+    pc_out <= pc;
 
 end behavior;

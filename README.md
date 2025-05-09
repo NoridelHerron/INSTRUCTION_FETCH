@@ -9,20 +9,19 @@ This project implements a basic Instruction Fetch (IF) stage in VHDL for a 5-sta
 - Clean design for integration with instruction memory and decode stage
 
 ## Internal Module
-**INST_MEM** https://github.com/NoridelHerron/MEMORY_MODULE
+**INST_MEM** 
     - Take PC counter
     - Return instruction 
-    
+*For more details ->* https://github.com/NoridelHerron/MEMORY_MODULE
+
 ## Project Structure
 INSTRUCTION_FETCH/
-- customized_function
-    - **reusable_function.vhd** - customize function declaration
-    - **reusable_fuction_def.vhd** - function definition    
 - images/
     - tcl.png  
 - src/
-    - INST_FETCH.vhd
-    - INST_MEM
+    - INST_FETCH.vhd, INST_MEM
+    - **reusable_function.vhd** - customize function declaration
+    - **reusable_fuction_def.vhd** - function definition    
 - test_bench/
     - tb_INST_FETCH.vhd
 - .gitignore/
@@ -40,8 +39,10 @@ INSTRUCTION_FETCH/
 
 ## Simulation Results
 ### Tcl Console Output
+![Tcl Output](images/wave.png) 
+### Tcl Console Output
 ![Tcl Output](images/tcl.png) 
-Shows that the testing was successful
+*Show instructions matched*
 
 ## How to Run
 
